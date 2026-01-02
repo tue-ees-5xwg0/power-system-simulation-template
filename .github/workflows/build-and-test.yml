@@ -20,9 +20,9 @@ jobs:
     - name: Set up uv
       uses: astral-sh/setup-uv@v4
             
-    - name: Sync dependencies
+    - name: Sync dependencies (install from wheel)
       run: |
-        uv sync
+        uv sync --no-editable
 
     - name: Test with pytest
       run: |

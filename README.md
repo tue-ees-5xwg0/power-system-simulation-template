@@ -35,6 +35,14 @@ You can run the following command to format your code:
 uv run ruff format .
 ```
 
+## Running Jupyter Notebook
+
+To start Jupyter Notebook for working with examples:
+
+```shell
+uv run jupyter notebook
+```
+
 ## Folder structure of the repository
 
 The folder structure of the repository is explained as below.
