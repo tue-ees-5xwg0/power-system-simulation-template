@@ -2,7 +2,6 @@
 
 This is a student project for Power System Simulation.
 
-
 ## Installation
 
 This project uses [uv](https://docs.astral.sh/uv/) for dependency management.
@@ -42,7 +41,6 @@ Jupyter notebooks in the `example/` folder can be opened directly in VS Code. Th
 ## Folder structure of the repository
 
 The folder structure of the repository is explained as below.
-
 
 * [`src/power_system_simulation`](./src/power_system_simulation) is the main folder of the package. You should put your new functionality code there.
 * [`tests`](./tests) is the folder containing the test files. You should put your test code there.
