@@ -5,35 +5,34 @@ This is a student project for Power System Simulation.
 
 ## Installation
 
-In a Python environment, in the root of the repository, install it in develop mode using the command below.
+This project uses [uv](https://docs.astral.sh/uv/) for dependency management.
 
-**NOTE: you need to re-run the following command everytime you add new (optional) dependencies!**
+In the root of the repository, sync all dependencies using:
 
 ```shell
-pip install -e .[dev,example]
+uv sync
 ```
 
 After installation, run the test.
 
 ```shell
-pytest
+uv run pytest
 ```
 
 ## Code style and quality check
 
-You can run the following two commands to automatically format your code style.
+This project uses [ruff](https://docs.astral.sh/ruff/) for linting and formatting.
+
+You can run the following command to check and auto-fix code issues:
 
 ```shell
-isort .
-black .
+uv run ruff check --fix .
 ```
 
-You can run the following command to check the code quality.
-It will return errors if the quality check fails.
-You need to read the errors and make required adjustments.
+You can run the following command to format your code:
 
 ```shell
-pylint power_system_simulation 
+uv run ruff format .
 ```
 
 ## Folder structure of the repository
