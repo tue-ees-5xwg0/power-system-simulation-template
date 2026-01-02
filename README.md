@@ -35,13 +35,9 @@ You can run the following command to format your code:
 uv run ruff format .
 ```
 
-## Running Jupyter Notebook
+## Working with Jupyter Notebooks
 
-To start Jupyter Notebook for working with examples:
-
-```shell
-uv run jupyter notebook
-```
+Jupyter notebooks in the `example/` folder can be opened directly in VS Code. The project includes `ipykernel` in the development dependencies, which allows VS Code to run notebook cells using the `.venv` environment.
 
 ## Folder structure of the repository
 
