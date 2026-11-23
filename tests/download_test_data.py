@@ -1,4 +1,3 @@
-import json
 import shutil
 import stat
 import tempfile
@@ -6,29 +5,13 @@ import urllib.request
 import zipfile
 from pathlib import Path, PurePosixPath, PureWindowsPath
 
-REPOSITORY = "tue-ees-5xwg0/assignment-test-data"
 ASSET_NAME = "assignment_test_data.zip"
-RELEASES_URL = f"https://api.github.com/repos/{REPOSITORY}/releases/latest"
+DOWNLOAD_URL = "https://github.com/tue-ees-5xwg0/assignment-test-data/releases/latest/download/assignment_test_data.zip"
 DATA_DIR = Path(__file__).resolve().parent / "data"
 
 
 def check_cache() -> bool:
     return DATA_DIR.is_dir() and any(DATA_DIR.iterdir())
-
-
-def latest_asset_url() -> tuple[str, str]:
-    request = urllib.request.Request(
-        RELEASES_URL,
-        headers={"Accept": "application/vnd.github+json", "User-Agent": "power-system-simulation"},
-    )
-    with urllib.request.urlopen(request, timeout=60) as response:
-        release = json.load(response)
-
-    for asset in release.get("assets", []):
-        if asset.get("name") == ASSET_NAME:
-            return release["tag_name"], asset["browser_download_url"]
-
-    raise RuntimeError(f"Latest release does not contain {ASSET_NAME}")
 
 
 def extract_archive(archive_path: Path, destination: Path) -> int:
@@ -78,19 +61,16 @@ def download_test_data(force: bool = False) -> Path:
         print(f"Using cached test data in {DATA_DIR}.")
         return DATA_DIR
 
-    tag, download_url = latest_asset_url()
-
-    print(f"Downloading {ASSET_NAME} from release {tag}...")
+    print(f"Downloading {ASSET_NAME} from the latest release...")
     with tempfile.TemporaryDirectory() as temporary_directory:
         archive_path = Path(temporary_directory) / ASSET_NAME
-        request = urllib.request.Request(download_url, headers={"User-Agent": "power-system-simulation"})
-        with urllib.request.urlopen(request, timeout=60) as response, archive_path.open("wb") as archive:
+        with urllib.request.urlopen(DOWNLOAD_URL, timeout=60) as response, archive_path.open("wb") as archive:
             shutil.copyfileobj(response, archive)
 
         print(f"Extracting files into {DATA_DIR}...")
         file_count = extract_archive(archive_path, DATA_DIR)
 
-    print(f"Extracted {file_count} files from release {tag}.")
+    print(f"Extracted {file_count} files.")
     return DATA_DIR
 
 
