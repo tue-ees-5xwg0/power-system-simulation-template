@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: "uv"
+    directory: "/"
+    schedule:
+      interval: "quarterly"
+    groups:
+      all-dependencies:
+        patterns:
+          - "*"
