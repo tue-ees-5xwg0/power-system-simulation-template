@@ -18,6 +18,8 @@ After installation, run the test.
 uv run pytest
 ```
 
+The first pytest run may take a while because it downloads the test data automatically. You can find the data in `tests/data/`; subsequent test runs reuse the cached data.
+
 ## Code style and quality check
 
 This project uses [ruff](https://docs.astral.sh/ruff/) for linting and formatting.
