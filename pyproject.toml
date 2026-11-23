@@ -12,7 +12,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: BSD License"
 ]
-requires-python = ">=3.14"
+requires-python = ">=3.15"
 # add dependencies of your core package, check the license first!
 dependencies = []
 version = "0.1"
@@ -40,7 +40,7 @@ addopts = ["--cov=power_system_simulation", "--cov-report", "term", "--cov-repor
 
 [tool.ruff]
 line-length = 120
-target-version = "py314"
+target-version = "py315"
 
 [tool.ruff.lint]
 select = [
